@@ -397,7 +397,21 @@
     
     if (property[@"path"]) {
         SCNMatrix4 m = SCNMatrix4Identity;
-        material.contents = property[@"path"];
+        
+        // scenekit has an issue with indexed-colour png's on some devices, so we redraw the image. See for more details: https://stackoverflow.com/questions/40058359/scenekit-some-textures-have-a-red-hue/45824190#45824190
+        
+        UIImage *correctedImage;
+        UIImage *inputImage = [UIImage imageNamed:property[@"path"]];
+        CGFloat width  = inputImage.size.width;
+        CGFloat height = inputImage.size.height;
+        
+        UIGraphicsBeginImageContext(inputImage.size);
+        [inputImage drawInRect:(CGRectMake(0, 0, width, height))];
+        correctedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        material.contents = correctedImage;
+
         
         if (property[@"wrapS"]) {
             material.wrapS = (SCNWrapMode) [property[@"wrapS"] integerValue];
@@ -459,6 +473,10 @@
         material.blendMode = (SCNBlendMode) [json[@"blendMode"] integerValue];
     }
     
+    if (json[@"transparencyMode"]) {
+        material.transparencyMode = (SCNTransparencyMode) [json[@"transparencyMode"] integerValue];
+    }
+
     if (json[@"lightingModel"]) {
         material.lightingModelName = json[@"lightingModel"];
     }

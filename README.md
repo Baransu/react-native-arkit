@@ -9,6 +9,10 @@
 
 React Native binding for iOS ARKit.
 
+**Made with React Native Arkit**:
+
+- Homestory: An AI powered interior design assistant ([App store](https://itunes.apple.com/us/app/homestory-augmented-reality/id1292552232?ls=1&mt=8))
+
 **Tutorial**: [How to make an ARKit app in 5 minutes using React Native](https://medium.com/@HippoAR/how-to-make-your-own-arkit-app-in-5-minutes-using-react-native-9d7ce109a4c2)
 
 **Sample Project**: https://github.com/HippoAR/ReactNativeARKit
@@ -412,6 +416,7 @@ Most objects take a material property with these sub-props:
 | `litPerPixel` | boolean | calculate lighting per-pixel or vertex [litPerPixel](https://developer.apple.com/documentation/scenekit/scnmaterial/1462580-litperpixel) |
 | `lightingModel` | `ARKit.LightingModel.*` | [LightingModel](https://developer.apple.com/documentation/scenekit/scnmaterial.lightingmodel) |
 | `blendMode` | `ARKit.BlendMode.*` | [BlendMode](https://developer.apple.com/documentation/scenekit/scnmaterial/1462585-blendmode) |
+| `transparencyMode` | `ARKit.TransparencyMode.*` | [TransparencyMode](https://developer.apple.com/documentation/scenekit/scnmaterial/1462549-transparencymode?language=objc) |
 | `fillMode` | `ARKit.FillMode.*` | [FillMode](https://developer.apple.com/documentation/scenekit/scnmaterial/2867442-fillmode)
 | `shaders` | Object with keys from `ARKit.ShaderModifierEntryPoint.*` and shader strings as values | [Shader modifiers](https://developer.apple.com/documentation/scenekit/scnshadable) |
 | `colorBufferWriteMask` | `ARKit.ColorMask.*` | [color mask](https://developer.apple.com/documentation/scenekit/scncolormask). Set to ARKit.ColorMask.None so that an object is transparent, but receives deferred shadows. |
